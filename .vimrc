@@ -119,9 +119,10 @@ else
     set t_Co=256 " make sure our terminal use 256 color
     let g:solarized_termcolors = 256
 endif
-colorscheme solarized
+" colorscheme solarized
 " colorscheme exlightgray
 " colorscheme gruvbox
+colorscheme one
 
 "/////////////////////////////////////////////////////////////////////////////
 " General
@@ -207,7 +208,9 @@ if has('gui_running')
             " Also for GTK 1
             set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
         elseif OSX()
-            if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
+            if getfontname( 'Inconsolata for Powerline' ) != ''
+                set guifont=Inconsolata\ for\ Powerline:h14
+            elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h15
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
                 set guifont=DejaVu\ Sans\ Mono:h15
@@ -245,10 +248,13 @@ set titlestring=%t\ (%{expand(\"%:p:.:h\")}/)
 if has('gui_running')
     " set window's width to 130 columns and height to 40 rows
     if exists('+lines')
-        set lines=40
+        set lines=128
     endif
     if exists('+columns')
-        set columns=130
+        set columns=256
+    endif
+    if exists('+linespace')
+        set linespace=2
     endif
 
     " DISABLE
@@ -294,9 +300,9 @@ function! g:MyDiff()
     silent execute '!' .  'diff ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
 endfunction
 
-set cindent shiftwidth=2 " set cindent on to autoinent when editing c/c++ file, with 4 shift width
-set tabstop=2 " set tabstop to 4 characters
-set expandtab " set expandtab on, the tab will be change to space automaticaly
+set cindent shiftwidth=4 " set cindent on to autoinent when editing c/c++ file, with 4 shift width
+set tabstop=4 " set tabstop to 4 characters
+" set expandtab " set expandtab on, the tab will be change to space automaticaly
 set ve=block " in visual block mode, cursor can be positioned where there is no actual character
 
 " set Number format to null(default is octal) , when press CTRL-A on number
