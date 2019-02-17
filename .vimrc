@@ -210,6 +210,14 @@ if has('gui_running')
         elseif OSX()
             if getfontname( 'Inconsolata for Powerline' ) != ''
                 set guifont=Inconsolata\ for\ Powerline:h14
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'Inconsolata' ) != ''
+                set guifont=Inconsolata:h14
+                if exists('+linespace')
+                    set linespace=2
+                endif
             elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h15
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
@@ -252,9 +260,6 @@ if has('gui_running')
     endif
     if exists('+columns')
         set columns=256
-    endif
-    if exists('+linespace')
-        set linespace=2
     endif
 
     " DISABLE
