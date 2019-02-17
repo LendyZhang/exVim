@@ -31,6 +31,8 @@ Plugin 'exvim/ex-searchcompl'
 Plugin 'exvim/ex-colorschemes'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -54,6 +56,8 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'rakr/vim-one'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " =======================================================
 
