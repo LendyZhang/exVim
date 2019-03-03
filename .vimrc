@@ -224,7 +224,17 @@ if has('gui_running')
                 set guifont=DejaVu\ Sans\ Mono:h15
             endif
         elseif WINDOWS()
-            if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
+            if getfontname( 'Inconsolata for Powerline' ) != ''
+                set guifont=Inconsolata\ for\ Powerline:h11:cANSI
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'Inconsolata' ) != ''
+                set guifont=Inconsolata:h11:cANSI
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11:cANSI
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
                 set guifont=DejaVu\ Sans\ Mono:h11:cANSI
