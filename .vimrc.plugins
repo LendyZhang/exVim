@@ -80,6 +80,12 @@ let g:ex_symbol_select_cmd = 'TS'
 " ---------------------------------------------------
 Plugin 'exvim/ex-cscope'
 
+if WINDOWS()
+    if executable(g:ex_tools_path.'/windows/cscope.exe')
+        let &csprg = g:ex_tools_path.'/windows/cscope.exe'
+    endif
+endif
+
 call excscope#register_hotkey( 100, 0, '<leader>cd', ":EXCSToggle<CR>", 'Toggle cscope window.' )
 
 " ex-qfix
@@ -101,6 +107,12 @@ Plugin 'exvim/ex-taglist'
 
 " F4:  Switch on/off TagList
 nnoremap <unique> <silent> <F4> :TlistToggle<CR>
+
+if WINDOWS()
+    if executable(g:ex_tools_path.'/windows/ctags.exe')
+        let Tlist_Ctags_Cmd = g:ex_tools_path.'/windows/ctags.exe'
+    endif
+endif
 
 "let Tlist_Ctags_Cmd = $VIM.'/vimfiles/ctags.exe' " location of ctags tool
 let Tlist_Show_One_File = 1 " Displaying tags for only one file~
