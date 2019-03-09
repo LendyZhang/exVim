@@ -57,7 +57,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rakr/vim-one'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'LendyZhang/vim-cpp-enhanced-highlight'
 
 " =======================================================
 
