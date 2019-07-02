@@ -124,6 +124,9 @@ endif
 " colorscheme gruvbox
 colorscheme one
 
+hi LineNr guibg=#2c323c
+hi VertSplit guifg=#151515 guibg=#151515
+
 "/////////////////////////////////////////////////////////////////////////////
 " General
 "/////////////////////////////////////////////////////////////////////////////
@@ -208,7 +211,17 @@ if has('gui_running')
             " Also for GTK 1
             set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
         elseif OSX()
-            if getfontname( 'Inconsolata for Powerline' ) != ''
+            if getfontname( 'InconsolataGo Nerd Font' ) != ''
+                set guifont=InconsolataGo\ Nerd\ Font:h14
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'InconsolataGo Nerd Font Mono' ) != ''
+                set guifont=InconsolataGo\ Nerd\ Font\ Mono:h14
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'Inconsolata for Powerline' ) != ''
                 set guifont=Inconsolata\ for\ Powerline:h14
                 if exists('+linespace')
                     set linespace=2
@@ -224,7 +237,17 @@ if has('gui_running')
                 set guifont=DejaVu\ Sans\ Mono:h15
             endif
         elseif WINDOWS()
-            if getfontname( 'Inconsolata for Powerline' ) != ''
+            if getfontname( 'InconsolataGo Nerd Font' ) != ''
+                set guifont=InconsolataGo\ Nerd\ Font:h11:cANSI
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'InconsolataGo Nerd Font Mono' ) != ''
+                set guifont=InconsolataGo\ Nerd\ Font\ Mono:h11:cANSI
+                if exists('+linespace')
+                    set linespace=2
+                endif
+            elseif getfontname( 'Inconsolata for Powerline' ) != ''
                 set guifont=Inconsolata\ for\ Powerline:h11:cANSI
                 if exists('+linespace')
                     set linespace=2
@@ -261,6 +284,8 @@ set lazyredraw " do not redraw while executing macros (much faster)
 set display+=lastline " for easy browse last line with wrap text
 set laststatus=2 " always have status-line
 set titlestring=%t\ (%{expand(\"%:p:.:h\")}/)
+set cursorline
+set numberwidth=6
 
 " set window size (if it's GUI)
 if has('gui_running')

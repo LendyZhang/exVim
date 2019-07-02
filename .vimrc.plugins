@@ -289,7 +289,7 @@ let g:airline_solarized_normal_green = 1
 let g:airline_theme = 'jellybeans'
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_follow_symlinks = 2
@@ -317,6 +317,10 @@ Plugin 'scrooloose/nerdtree'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMouseMode = 1
 let g:NERDTreeMapToggleZoom = '<Space>'
+" let g:NERDTreeDirArrowExpandable = "\uf641"
+" let g:NERDTreeDirArrowCollapsible = "\uf63f"
+
+hi link NERDTreeDirSlash Comment
 
 " nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
 " ---------------------------------------------------
