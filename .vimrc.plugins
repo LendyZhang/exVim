@@ -45,7 +45,13 @@ Plugin 'exvim/ex-project'
 
 " ex-gsearch
 " ---------------------------------------------------
-Plugin 'exvim/ex-gsearch'
+if WINDOWS()
+    if executable(g:ex_tools_path.'/windows/lid.exe')
+        let g:ex_gsearch_lid_cmd = g:ex_tools_path.'/windows/lid.exe'
+    endif
+endif
+
+Plugin 'LendyZhang/ex-gsearch'
 
 call exgsearch#register_hotkey( 100, 0, '<leader>gs', ":EXGSearchToggle<CR>", 'Toggle global search window.' )
 call exgsearch#register_hotkey( 101, 0, '<leader>gg', ":EXGSearchCWord<CR>", 'Search current word.' )
