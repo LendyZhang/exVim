@@ -41,7 +41,10 @@ Plugin 'exvim/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
-Plugin 'exvim/ex-project'
+let g:ex_project_folder_label = "\ue5fe "
+let g:ex_project_folder_label_closed = "\ue5ff "
+
+Plugin 'LendyZhang/ex-project'
 
 " ex-gsearch
 " ---------------------------------------------------
