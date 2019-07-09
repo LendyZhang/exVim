@@ -41,8 +41,8 @@ Plugin 'exvim/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
-let g:ex_project_folder_label = "\ue5fe "
-let g:ex_project_folder_label_closed = "\ue5ff "
+let g:ex_project_folder_label = "\ufc6e "
+let g:ex_project_folder_label_closed = "\uf74a "
 
 Plugin 'LendyZhang/ex-project'
 
@@ -226,7 +226,7 @@ let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:va
 
 " ex-autocomplpop: invoke when you input text
 " ---------------------------------------------------
-Plugin 'exvim/ex-autocomplpop'
+" Plugin 'exvim/ex-autocomplpop'
 
 " ex-showmarks: invoke by m... or <leader>mm, <leader>ma
 " ---------------------------------------------------
@@ -345,11 +345,11 @@ map <unique> <C-F11> <Plug>NERDCommenterUncomment
 
 " syntastic: invoke when you save file and have syntac-checker
 " ---------------------------------------------------
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " this will make html file by Angular.js ignore errors
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" let g:syntastic_javascript_checkers = ['eslint']
 
 " DISABLE: use ex-autocomplpop instead
 " " neocomplcache: invoke when you insert words

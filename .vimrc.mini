@@ -58,6 +58,7 @@ Plugin 'wavded/vim-stylus'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rakr/vim-one'
 Plugin 'LendyZhang/vim-cpp-enhanced-highlight'
+Plugin 'neoclide/coc.nvim'
 
 " =======================================================
 
