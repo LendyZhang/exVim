@@ -126,6 +126,7 @@ colorscheme one
 
 hi LineNr guibg=#2c323c
 hi VertSplit guifg=#151515 guibg=#151515
+hi CocHighlightText guibg=#4b5263
 
 "/////////////////////////////////////////////////////////////////////////////
 " General
