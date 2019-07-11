@@ -128,6 +128,10 @@ hi LineNr guibg=#2c323c
 hi VertSplit guifg=#151515 guibg=#151515
 hi CocHighlightText guibg=#4b5263
 
+hi link LspCxxHlGroupEnumConstant Constant
+hi link LspCxxHlGroupNamespace Type
+hi link LspCxxHlGroupMemberVariable Identifier
+
 "/////////////////////////////////////////////////////////////////////////////
 " General
 "/////////////////////////////////////////////////////////////////////////////
