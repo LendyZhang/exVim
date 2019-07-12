@@ -162,7 +162,7 @@ set directory=$HOME/.data/swap " where to put swap file
 " Redefine the shell redirection operator to receive both the stderr messages and stdout messages
 set shellredir=>%s\ 2>&1
 set history=50 " keep 50 lines of command line history
-set updatetime=1000 " default = 4000
+set updatetime=300 " default = 4000
 set autoread " auto read same-file change ( better for vc/vim change )
 set maxmempattern=1000 " enlarge maxmempattern from 1000 to ... (2000000 will give it without limit)
 
