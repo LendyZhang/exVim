@@ -279,12 +279,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-if has('gui_running')
-    let g:airline_powerline_fonts = 1
-else
-    let g:airline_powerline_fonts = 0
-endif
-
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 " NOTE: When you open lots of buffers and typing text, it is so slow.
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 0

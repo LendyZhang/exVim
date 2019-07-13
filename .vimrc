@@ -4,6 +4,10 @@
 
 set nocompatible " be iMproved, required
 
+if has('gui_vimr') || (!has('gui_running') && $TERM_PROGRAM != 'Apple_Terminal')
+    set termguicolors
+endif
+
 function! OSX()
     return has('macunix')
 endfunction
