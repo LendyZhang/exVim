@@ -246,13 +246,8 @@ if has('gui_running')
                 set guifont=DejaVu\ Sans\ Mono:h15
             endif
         elseif WINDOWS()
-            if getfontname( 'InconsolataGo Nerd Font' ) != ''
-                set guifont=InconsolataGo\ Nerd\ Font:h10:cANSI
-                if exists('+linespace')
-                    set linespace=4
-                endif
-            elseif getfontname( 'InconsolataGo Nerd Font Mono' ) != ''
-                set guifont=InconsolataGo\ Nerd\ Font\ Mono:h10:cANSI
+            if getfontname( 'InconsolataGo NF' ) != ''
+                set guifont=InconsolataGo\ NF:h10:cANSI
                 if exists('+linespace')
                     set linespace=4
                 endif
@@ -263,6 +258,9 @@ if has('gui_running')
                 endif
             elseif getfontname( 'Inconsolata' ) != ''
                 set guifont=Inconsolata:h10:cANSI
+                if exists('+linespace')
+                    set linespace=4
+                endif
             elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11:cANSI
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
