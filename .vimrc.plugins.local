@@ -80,10 +80,18 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 Plugin 'jackguo380/vim-lsp-cxx-highlight'
 
-augroup auto_switch_lsp_cxx_highlight
-	autocmd!
-	autocmd InsertEnter * call lsp_cxx_hl#hl#disable()
-	autocmd BufWritePost,FileWritePost,FileAppendPost * call lsp_cxx_hl#hl#enable()
+augroup auto_switch_semantic_highlight
+  autocmd!
+  autocmd TextChanged,TextChangedI *
+          \ if !exists('b:semantic_highlight_disabled') |
+          \   let b:semantic_highlight_disabled=1 |
+          \   call lsp_cxx_hl#hl#disable() |
+          \ endif
+  autocmd BufWritePost,FileWritePost,FileAppendPost *
+          \ if exists('b:semantic_highlight_disabled') |
+          \   unlet! b:semantic_highlight_disabled |
+          \   call lsp_cxx_hl#hl#enable() |
+          \ endif
 augroup END
 
 " Plugin 'ryanoasis/vim-devicons'
