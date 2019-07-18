@@ -41,8 +41,24 @@ Plugin 'exvim/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
-let g:ex_project_folder_label = "\ufc6e "
-let g:ex_project_folder_label_closed = "\uf74a "
+if !exists('g:ex_font_extra_glyph')
+    if WINDOWS()
+        let g:ex_font_extra_glyph = 2
+    else
+        let g:ex_font_extra_glyph = 3
+    endif
+endif
+
+if g:ex_font_extra_glyph == 3
+    let g:ex_project_folder_label = "\ufc6e "
+    let g:ex_project_folder_label_closed = "\uf74a "
+elseif g:ex_font_extra_glyph == 2
+    let g:ex_project_folder_label = "\uf078 "
+    let g:ex_project_folder_label_closed = "\uf054 "
+else
+    let g:ex_project_folder_label = "[F]"
+    let g:ex_project_folder_label_closed = "[+]"
+endif
 
 Plugin 'LendyZhang/ex-project'
 
@@ -62,28 +78,28 @@ call exgsearch#register_hotkey( 102, 0, '<leader><S-f>', ":GS ", 'Shortcut for :
 
 " ex-tagselect
 " ---------------------------------------------------
-Plugin 'exvim/ex-tags'
+" Plugin 'exvim/ex-tags'
 
-call extags#register_hotkey( 100, 0, '<leader>ts', ":EXTagsToggle<CR>", 'Toggle tag select window.' )
-call extags#register_hotkey( 101, 0, '<leader>]', ":EXTagsCWord<CR>", 'Tag select current word.' )
+" call extags#register_hotkey( 100, 0, '<leader>ts', ":EXTagsToggle<CR>", 'Toggle tag select window.' )
+" call extags#register_hotkey( 101, 0, '<leader>]', ":EXTagsCWord<CR>", 'Tag select current word.' )
 " DISABLE: nnoremap <unique> <leader>] :exec 'ts ' . expand('<cword>')<CR>
 
 " ex-symbol
 " ---------------------------------------------------
-Plugin 'exvim/ex-symbol'
+" Plugin 'exvim/ex-symbol'
 
-call exsymbol#register_hotkey( 100, 0, '<leader>ss', ":EXSymbolList<CR>", 'List all symbols.' )
-call exsymbol#register_hotkey( 101, 0, '<leader>sq', ":EXSymbolOpen<CR>", 'Open symbols window.' )
-call exsymbol#register_hotkey( 102, 0, '<leader>sg', ":EXSymbolCWord<CR>", 'List symbols contains current word.' )
+" call exsymbol#register_hotkey( 100, 0, '<leader>ss', ":EXSymbolList<CR>", 'List all symbols.' )
+" call exsymbol#register_hotkey( 101, 0, '<leader>sq', ":EXSymbolOpen<CR>", 'Open symbols window.' )
+" call exsymbol#register_hotkey( 102, 0, '<leader>sg', ":EXSymbolCWord<CR>", 'List symbols contains current word.' )
 
-if has('gui_running')
-    if has ('mac')
-        call exsymbol#register_hotkey( 102, 0, 'Ò', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
-    else
-        call exsymbol#register_hotkey( 102, 0, '<M-L>', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
-    endif
-endif
-let g:ex_symbol_select_cmd = 'TS'
+" if has('gui_running')
+    " if has ('mac')
+        " call exsymbol#register_hotkey( 102, 0, 'Ò', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
+    " else
+        " call exsymbol#register_hotkey( 102, 0, '<M-L>', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
+    " endif
+" endif
+" let g:ex_symbol_select_cmd = 'TS'
 
 " ex-cscope
 " ---------------------------------------------------
@@ -279,7 +295,10 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-let g:airline_powerline_fonts = 1
+if g:ex_font_extra_glyph > 0
+    let g:airline_powerline_fonts = 1
+endif
+
 let g:airline#extensions#tabline#enabled = 1 " NOTE: When you open lots of buffers and typing text, it is so slow.
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 0
@@ -293,12 +312,12 @@ let g:airline_solarized_normal_green = 1
 let g:airline_theme = 'jellybeans'
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-let g:ctrlp_follow_symlinks = 2
-let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
-nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
+" Plugin 'ctrlpvim/ctrlp.vim'
+" let g:ctrlp_working_path_mode = ''
+" let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+" let g:ctrlp_follow_symlinks = 2
+" let g:ctrlp_max_files = 0 " Unset cap of 10,000 files so we find everything
+" nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------

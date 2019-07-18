@@ -222,53 +222,44 @@ if has('gui_running')
         elseif OSX()
             if getfontname( 'InconsolataGo Nerd Font' ) != ''
                 set guifont=InconsolataGo\ Nerd\ Font:h14
-                if exists('+linespace')
-                    set linespace=2
-                endif
+                set linespace=2
+                let g:ex_font_extra_glyph = 3
             elseif getfontname( 'InconsolataGo Nerd Font Mono' ) != ''
                 set guifont=InconsolataGo\ Nerd\ Font\ Mono:h14
-                if exists('+linespace')
-                    set linespace=2
-                endif
+                set linespace=2
+                let g:ex_font_extra_glyph = 2
             elseif getfontname( 'Inconsolata for Powerline' ) != ''
                 set guifont=Inconsolata\ for\ Powerline:h14
-                if exists('+linespace')
-                    set linespace=2
-                endif
+                set linespace=2
+                let g:ex_font_extra_glyph = 1
             elseif getfontname( 'Inconsolata' ) != ''
                 set guifont=Inconsolata:h14
-                if exists('+linespace')
-                    set linespace=2
-                endif
+                set linespace=2
+                let g:ex_font_extra_glyph = 0
             elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h15
+                let g:ex_font_extra_glyph = 1
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
                 set guifont=DejaVu\ Sans\ Mono:h15
+                let g:ex_font_extra_glyph = 0
             endif
         elseif WINDOWS()
-            if getfontname( 'InconsolataGo NF' ) != ''
-                set guifont=InconsolataGo\ NF:h10:cANSI
-                if exists('+linespace')
-                    set linespace=4
-                endif
+            if getfontname( 'Consolas NF' ) != ''
+                set guifont=Consolas\ NF:h10:cANSI
+                set linespace=2
+                let g:ex_font_extra_glyph = 2
             elseif getfontname( 'Inconsolata for Powerline' ) != ''
                 set guifont=Inconsolata\ for\ Powerline:h10:cANSI
-                if exists('+linespace')
-                    set linespace=4
-                endif
+                set linespace=2
+                let g:ex_font_extra_glyph = 1
             elseif getfontname( 'Inconsolata' ) != ''
                 set guifont=Inconsolata:h10:cANSI
-                if exists('+linespace')
-                    set linespace=4
-                endif
-            elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11:cANSI
-            elseif getfontname( 'DejaVu Sans Mono' ) != ''
-                set guifont=DejaVu\ Sans\ Mono:h11:cANSI
-            elseif getfontname( 'Consolas' ) != ''
-                set guifont=Consolas:h11:cANSI " this is the default visual studio font
+                set linespace=2
+                let g:ex_font_extra_glyph = 0
             else
-                set guifont=Lucida_Console:h11:cANSI
+                set guifont=Consolas:h10:cANSI
+                set linespace=2
+                let g:ex_font_extra_glyph = 0
             endif
         endif
     endfunction
