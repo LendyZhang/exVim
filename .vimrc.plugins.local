@@ -5,8 +5,10 @@
 " Add your customized plugins:
 " Example: Plugin 'foo/bar/foobar'
 
+" The famous Atom One Dark theme..
 Plugin 'rakr/vim-one'
 
+" Enhance C/C++ syntax highlighting.
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
@@ -14,6 +16,10 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 Plugin 'LendyZhang/vim-cpp-enhanced-highlight'
 
+" Detect indent style.
+Plugin 'luochen1990/indent-detector.vim'
+
+" The best semantic completion I'd ever used.
 Plugin 'neoclide/coc.nvim', {'pinned': 1}
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -58,7 +64,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Using CocList
 " Show all diagnostics
@@ -82,6 +88,7 @@ nnoremap <silent> <space>f  :<C-u>CocList files<CR>
 " Grep.
 nnoremap <silent> <space>g  :<C-u>CocList grep<CR>
 
+" Semantic highlighting.
 Plugin 'jackguo380/vim-lsp-cxx-highlight'
 
 augroup auto_switch_semantic_highlight
@@ -98,4 +105,5 @@ augroup auto_switch_semantic_highlight
           \ endif
 augroup END
 
+" Polish several plugins with nerd font glyphs.
 " Plugin 'ryanoasis/vim-devicons'

@@ -291,13 +291,6 @@ if has('gui_running')
     if exists('+columns')
         set columns=256
     endif
-
-    " DISABLE
-    " if WINDOWS()
-    "     au GUIEnter * simalt ~x " Maximize window when enter vim
-    " else
-    "     " TODO: no way right now
-    " endif
 endif
 
 set showfulltag " show tag with function protype.
@@ -337,7 +330,7 @@ endfunction
 
 set cindent shiftwidth=4 " set cindent on to autoinent when editing c/c++ file, with 4 shift width
 set tabstop=4 " set tabstop to 4 characters
-" set expandtab " set expandtab on, the tab will be change to space automaticaly
+set noexpandtab " set expandtab on, the tab will be change to space automaticaly
 set ve=block " in visual block mode, cursor can be positioned where there is no actual character
 
 " set Number format to null(default is octal) , when press CTRL-A on number
@@ -374,13 +367,8 @@ set grepformat=%f:%l:%m
 " ------------------------------------------------------------------
 
 if has('autocmd')
-
     augroup ex
         au!
-
-        " ------------------------------------------------------------------
-        " Desc: Buffer
-        " ------------------------------------------------------------------
 
         " when editing a file, always jump to the last known cursor position.
         " don't do it when the position is invalid or when inside an event handler
@@ -399,10 +387,6 @@ if has('autocmd')
         " au   BufEnter *   execute ":lcd " . expand("%:p:h")
         " } DISABLE end
 
-        " ------------------------------------------------------------------
-        " Desc: file types
-        " ------------------------------------------------------------------
-
         au FileType text setlocal textwidth=78 " for all text files set 'textwidth' to 78 characters.
         au FileType c,cpp,cs,swig set nomodeline " this will avoid bug in my project with namespace ex, the vim will tree ex:: as modeline.
 
@@ -412,48 +396,7 @@ if has('autocmd')
         au FileType vim set comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",f:\"
         au FileType lua set comments=f:--
 
-        " if edit python scripts, check if have \t. ( python said: the programme can only use \t or not, but can't use them together )
-        au FileType python,coffee call s:check_if_expand_tab()
     augroup END
-
-    function! s:check_if_expand_tab()
-        let has_noexpandtab = search('^\t','wn')
-        let has_expandtab = search('^    ','wn')
-
-        "
-        if has_noexpandtab && has_expandtab
-            let idx = inputlist ( ['ERROR: current file exists both expand and noexpand TAB, python can only use one of these two mode in one file.\nSelect Tab Expand Type:',
-                        \ '1. expand (tab=space, recommended)',
-                        \ '2. noexpand (tab=\t, currently have risk)',
-                        \ '3. do nothing (I will handle it by myself)'])
-            let tab_space = printf('%*s',&tabstop,'')
-            if idx == 1
-                let has_noexpandtab = 0
-                let has_expandtab = 1
-                silent exec '%s/\t/' . tab_space . '/g'
-            elseif idx == 2
-                let has_noexpandtab = 1
-                let has_expandtab = 0
-                silent exec '%s/' . tab_space . '/\t/g'
-            else
-                return
-            endif
-        endif
-
-        "
-        if has_noexpandtab == 1 && has_expandtab == 0
-            echomsg 'substitute space to TAB...'
-            set noexpandtab
-            echomsg 'done!'
-        elseif has_noexpandtab == 0 && has_expandtab == 1
-            echomsg 'substitute TAB to space...'
-            set expandtab
-            echomsg 'done!'
-        else
-            " it may be a new file
-            " we use original vim setting
-        endif
-    endfunction
 endif
 
 "/////////////////////////////////////////////////////////////////////////////
