@@ -24,7 +24,15 @@ fi
 # download and install bundles through Vundle in this repository
 echo "Update vim-plugins."
 cd ${ORIGINAL_PATH}
-vim -u .vimrc.mini --cmd "set rtp=./vimfiles,\$VIMRUNTIME,./vimfiles/after" +PluginClean +PluginUpdate +qall
+vim -u .vimrc.mini --cmd "set rtp=./vimfiles,\$VIMRUNTIME,./vimfiles/after" +PluginClean +PluginUpdate "+CocInstall coc-highlight" "+CocInstall coc-lists" +qall
+
+# checkout coc.nvim to the release branch.
+if [ -d "./vimfiles/bundle/coc.nvim/" ]; then
+    cd ./vimfiles/bundle/coc.nvim/
+    git checkout release
+fi
+
+echo "Please install nerd-fonts manually."
 
 # go back
 cd ${ORIGINAL_PATH}
