@@ -37,7 +37,7 @@ Plugin 'exvim/ex-aftercolors'
 
 " ex-vimentry
 " ---------------------------------------------------
-Plugin 'exvim/ex-vimentry'
+Plugin 'LendyZhang/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
@@ -321,6 +321,12 @@ let g:airline_theme = 'jellybeans'
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------
+if WINDOWS()
+    if executable('C:/msys64/usr/bin/git.exe')
+        let g:fugitive_git_executable = 'C:/msys64/usr/bin/git.exe'
+    endif
+endif
+
 Plugin 'tpope/vim-fugitive'
 
 " vim-surround: invoke when you select words and press 's'
