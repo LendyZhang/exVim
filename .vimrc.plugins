@@ -128,7 +128,7 @@ nnoremap <unique> <leader>hv :EXHierarchyCWord<CR>
 
 " ex-taglist: invoke by <F4>
 " ---------------------------------------------------
-Plugin 'exvim/ex-taglist'
+Plugin 'LendyZhang/ex-taglist'
 
 " F4:  Switch on/off TagList
 nnoremap <unique> <silent> <F4> :TlistToggle<CR>
