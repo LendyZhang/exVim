@@ -76,21 +76,21 @@ endif
 scriptencoding utf-8
 
 "/////////////////////////////////////////////////////////////////////////////
-" Bundle steup
+" Bundle setup
 "/////////////////////////////////////////////////////////////////////////////
 
 " vundle#begin
-filetype off " required
+" filetype off " required
 
 " set the runtime path to include Vundle
 if exists('g:exvim_custom_path')
     let g:ex_tools_path = g:exvim_custom_path.'/vimfiles/tools/'
-    exec 'set rtp+=' . fnameescape ( g:exvim_custom_path.'/vimfiles/bundle/Vundle.vim/' )
-    call vundle#rc(g:exvim_custom_path.'/vimfiles/bundle/')
+    exec 'set rtp+=' . fnameescape( g:exvim_custom_path.'/vimfiles/bundle/vim-plug/' )
+    call plug#begin(g:exvim_custom_path.'/vimfiles/bundle/')
 else
     let g:ex_tools_path = '~/.vim/tools/'
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#rc('~/.vim/bundle/')
+    set rtp+=~/.vim/bundle/vim-plug/
+    call plug#begin('~/.vim/bundle/')
 endif
 
 " load .vimrc.plugins & .vimrc.plugins.local
@@ -108,9 +108,11 @@ if filereadable(expand(vimrc_plugins_local_path))
     exec 'source ' . fnameescape(vimrc_plugins_local_path)
 endif
 
+call plug#end()
+
 " vundle#end
-filetype plugin indent on " required
-syntax on " required
+" filetype plugin indent on " required
+" syntax on " required
 
 "/////////////////////////////////////////////////////////////////////////////
 " Default colorscheme setup

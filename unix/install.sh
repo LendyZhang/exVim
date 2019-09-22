@@ -1,43 +1,16 @@
 #!/bin/bash
 
-export ORIGINAL_PATH=`pwd`
+# download vim-plug.
+echo "Download vim-plug."
+curl -fLo vimfiles/bundle/vim-plug/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "Check and install Vundle."
-
-# if we don't have folder vimfiles, create it.
-if [ ! -d "./vimfiles/" ]; then
-    mkdir ./vimfiles/
-fi
-cd ./vimfiles/
-
-# if we don't have bundle, create it.
-if [ ! -d "./bundle/" ]; then
-    mkdir ./bundle/
-fi
-cd ./bundle/
-
-# download or update vundle in ./vimfiles/bundle/
-if [ ! -d "./Vundle.vim/" ]; then
-    git clone https://github.com/gmarik/Vundle.vim Vundle.vim
-fi
-
-# download and install bundles through Vundle in this repository
-echo "Update vim-plugins."
-cd ${ORIGINAL_PATH}
-vim -u .vimrc.mini --cmd "set rtp=./vimfiles,\$VIMRUNTIME,./vimfiles/after" +PluginClean +PluginUpdate +qall
-
-# checkout coc.nvim to the release branch.
-if [ -d "./vimfiles/bundle/coc.nvim/" ]; then
-    cd ./vimfiles/bundle/coc.nvim/
-    git checkout release
-fi
+# download and install all plugins.
+echo "Install plugins."
+vim -u .vimrc.mini --cmd "set rtp=./vimfiles,\$VIMRUNTIME,./vimfiles/after" +PlugClean +PlugUpdate +qall
 
 echo "Please install nerd-fonts manually."
 
-# go back
-cd ${ORIGINAL_PATH}
-
-#
+# finish
 echo "|"
 echo "exVim installed successfully!"
 echo "|"

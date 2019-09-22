@@ -3,10 +3,10 @@
 " This file is designed to be safe to add your own plugins and plugins' configuration.
 
 " Add your customized plugins:
-" Example: Plugin 'foo/bar/foobar'
+" Example: Plug 'foo/bar/foobar'
 
 " The famous Atom One Dark theme..
-Plugin 'rakr/vim-one'
+Plug 'rakr/vim-one'
 
 " Enhance C/C++ syntax highlighting.
 let g:cpp_class_scope_highlight = 1
@@ -14,15 +14,15 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
-Plugin 'LendyZhang/vim-cpp-enhanced-highlight'
+Plug 'LendyZhang/vim-cpp-enhanced-highlight'
 
 " Detect indent style.
-Plugin 'ciaranm/detectindent'
+Plug 'ciaranm/detectindent'
 
 autocmd BufReadPost * :DetectIndent
 
 " The best semantic completion I'd ever used.
-Plugin 'neoclide/coc.nvim', {'pinned': 1}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -91,7 +91,7 @@ nnoremap <silent> <leader>sf  :<C-u>CocList files<CR>
 nnoremap <silent> <leader>sg  :<C-u>CocList grep<CR>
 
 " Semantic highlighting.
-Plugin 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 augroup auto_switch_semantic_highlight
   autocmd!
@@ -108,4 +108,7 @@ augroup auto_switch_semantic_highlight
 augroup END
 
 " Polish several plugins with nerd font glyphs.
-" Plugin 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
+
+" OpenCL syntax highlighting.
+Plug 'brgmnn/vim-opencl'
