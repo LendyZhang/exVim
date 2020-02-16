@@ -4,7 +4,7 @@
 
 set nocompatible " be iMproved, required
 
-if has('gui_vimr') || (!has('gui_running') && $TERM_PROGRAM != 'Apple_Terminal')
+if !has('gui_running') && $TERM_PROGRAM != 'Apple_Terminal'
     set termguicolors
 endif
 
@@ -285,7 +285,7 @@ set cursorline
 set numberwidth=6
 
 " set window size (if it's GUI)
-if has('gui_running')
+if has('gui_running') && !has('gui_vimr')
     " set window's width to 130 columns and height to 40 rows
     if exists('+lines')
         set lines=128
