@@ -210,60 +210,62 @@ if has('gui_running')
 
     " set guifont
     function! s:set_gui_font()
-        if has('gui_gtk2')
-            if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
-            elseif getfontname( 'DejaVu Sans Mono' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ 12
-            else
-                set guifont=Luxi\ Mono\ 12
-            endif
-        elseif has('x11')
-            " Also for GTK 1
-            set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-        elseif OSX()
-            if getfontname( 'InconsolataGo Nerd Font' ) != ''
-                set guifont=InconsolataGo\ Nerd\ Font:h14
-                set linespace=2
-                let g:ex_font_extra_glyph = 3
-            elseif getfontname( 'InconsolataGo Nerd Font Mono' ) != ''
-                set guifont=InconsolataGo\ Nerd\ Font\ Mono:h14
-                set linespace=2
-                let g:ex_font_extra_glyph = 2
-            elseif getfontname( 'Inconsolata for Powerline' ) != ''
-                set guifont=Inconsolata\ for\ Powerline:h14
-                set linespace=2
-                let g:ex_font_extra_glyph = 1
-            elseif getfontname( 'Inconsolata' ) != ''
-                set guifont=Inconsolata:h14
-                set linespace=2
-                let g:ex_font_extra_glyph = 0
-            elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h15
-                let g:ex_font_extra_glyph = 1
-            elseif getfontname( 'DejaVu Sans Mono' ) != ''
-                set guifont=DejaVu\ Sans\ Mono:h15
-                let g:ex_font_extra_glyph = 0
-            endif
-        elseif WINDOWS()
-            if getfontname( 'Consolas NF' ) != ''
-                set guifont=Consolas\ NF:h10:cANSI
-                set linespace=2
-                let g:ex_font_extra_glyph = 2
-            elseif getfontname( 'Inconsolata for Powerline' ) != ''
-                set guifont=Inconsolata\ for\ Powerline:h10:cANSI
-                set linespace=2
-                let g:ex_font_extra_glyph = 1
-            elseif getfontname( 'Inconsolata' ) != ''
-                set guifont=Inconsolata:h10:cANSI
-                set linespace=2
-                let g:ex_font_extra_glyph = 0
-            else
-                set guifont=Consolas:h10:cANSI
-                set linespace=2
-                let g:ex_font_extra_glyph = 0
-            endif
+        if !(has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS())
+            return
         endif
+
+        if WINDOWS()
+            let font_descs = [
+                \['JetBrainsMono NF',               10, 2, 2],
+                \['InconsolataGo NF',               10, 2, 2],
+                \['Consolas NF',                    10, 2, 2],
+                \['Inconsolata for Powerline',      10, 2, 1],
+                \['Inconsolata',                    10, 2, 0],
+                \['DejaVu Sans Mono for Powerline', 10, 2, 1],
+                \['DejaVu Sans Mono',               10, 2, 0],
+                \['Consolas'                        10, 2, 0]
+            \]
+        elseif OSX()
+            let font_descs = [
+                \['JetBrainsMono Nerd Font',        14, 2, 3],
+                \['JetBrainsMono Nerd Font Mono',   14, 2, 2],
+                \['InconsolataGo Nerd Font',        14, 2, 3],
+                \['InconsolataGo Nerd Font Mono',   14, 2, 2],
+                \['Inconsolata for Powerline',      14, 2, 1],
+                \['Inconsolata',                    14, 2, 0],
+                \['DejaVu Sans Mono for Powerline', 14, 2, 1],
+                \['DejaVu Sans Mono',               14, 2, 0],
+                \['Monokai',                        14, 2, 0]
+            \]
+        else
+            let font_descs = [
+                \['JetBrainsMono Nerd Font',        9, 2, 3],
+                \['JetBrainsMono Nerd Font Mono',   9, 2, 2],
+                \['InconsolataGo Nerd Font',        9, 2, 3],
+                \['InconsolataGo Nerd Font Mono',   9, 2, 2],
+                \['Inconsolata for Powerline',      9, 2, 1],
+                \['Inconsolata',                    9, 2, 0],
+                \['DejaVu Sans Mono for Powerline', 9, 2, 1],
+                \['DejaVu Sans Mono',               9, 2, 0],
+                \['Monospace',                      9, 2, 0]
+            \]
+        endif
+
+        for [font_name, font_size, line_space, extra_glyph] in font_descs
+            if getfontname(font_name) != ''
+                let font_setting = font_name
+                if has('gui_gtk2') || has('gui_gtk3')
+                    let font_setting .= ' ' . font_size
+                else
+                    let font_setting .= ':h' . font_size
+                endif
+
+                let &guifont = font_setting
+                let &linespace = line_space
+                let g:ex_font_extra_glyph = extra_glyph
+                break
+            endif
+        endfor
     endfunction
 endif
 
