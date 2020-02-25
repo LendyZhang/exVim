@@ -47,6 +47,7 @@ else
     else
         " in linux-terminal
         silent exec 'language en_US.utf8'
+        set visualbell t_vb=
     endif
 endif
 
@@ -85,11 +86,10 @@ scriptencoding utf-8
 " set the runtime path to include Vundle
 if exists('g:exvim_custom_path')
     let g:ex_tools_path = g:exvim_custom_path.'/vimfiles/tools/'
-    exec 'set rtp+=' . fnameescape( g:exvim_custom_path.'/vimfiles/bundle/vim-plug/' )
+    exec 'set rtp+=' . fnameescape( g:exvim_custom_path.'/vimfiles' )
     call plug#begin(g:exvim_custom_path.'/vimfiles/bundle/')
 else
     let g:ex_tools_path = '~/.vim/tools/'
-    set rtp+=~/.vim/bundle/vim-plug/
     call plug#begin('~/.vim/bundle/')
 endif
 
