@@ -227,15 +227,15 @@ if has('gui_running')
             \]
         elseif OSX()
             let font_descs = [
-                \['JetBrainsMono Nerd Font',        14, 2, 3],
-                \['JetBrainsMono Nerd Font Mono',   14, 2, 2],
+                \['JetBrainsMono Nerd Font',        12, 2, 3],
+                \['JetBrainsMono Nerd Font Mono',   12, 2, 2],
                 \['InconsolataGo Nerd Font',        14, 2, 3],
                 \['InconsolataGo Nerd Font Mono',   14, 2, 2],
                 \['Inconsolata for Powerline',      14, 2, 1],
                 \['Inconsolata',                    14, 2, 0],
-                \['DejaVu Sans Mono for Powerline', 14, 2, 1],
-                \['DejaVu Sans Mono',               14, 2, 0],
-                \['Monokai',                        14, 2, 0]
+                \['DejaVu Sans Mono for Powerline', 12, 2, 1],
+                \['DejaVu Sans Mono',               12, 2, 0],
+                \['Monokai',                        12, 2, 0]
             \]
         else
             let font_descs = [
