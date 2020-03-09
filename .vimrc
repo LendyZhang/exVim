@@ -131,6 +131,7 @@ endif
 colorscheme one
 
 hi LineNr guibg=#2c323c
+hi SignColumn guibg=#2c323c
 hi VertSplit guifg=#151515 guibg=#151515
 hi CocHighlightText guibg=#4b5263
 
@@ -200,7 +201,8 @@ if v:version >= 703
 endif
 
 " set default guifont
-if has('gui_running')
+" if g:ex_font_extra_glyph is set, that means the user has customized the gui font.
+if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS()) && !exists('g:ex_font_extra_glyph')
     augroup ex_gui_font
         " check and determine the gui font after GUIEnter.
         " NOTE: getfontname function only works after GUIEnter.
@@ -210,19 +212,15 @@ if has('gui_running')
 
     " set guifont
     function! s:set_gui_font()
-        if !(has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS())
-            return
-        endif
-
         if WINDOWS()
             let font_descs = [
-                \['JetBrainsMono NF',               10, 2, 2],
+                \['JetBrainsMono NF',                9, 2, 2],
                 \['InconsolataGo NF',               10, 2, 2],
                 \['Consolas NF',                    10, 2, 2],
                 \['Inconsolata for Powerline',      10, 2, 1],
                 \['Inconsolata',                    10, 2, 0],
-                \['DejaVu Sans Mono for Powerline', 10, 2, 1],
-                \['DejaVu Sans Mono',               10, 2, 0],
+                \['DejaVu Sans Mono for Powerline',  9, 2, 1],
+                \['DejaVu Sans Mono',                9, 2, 0],
                 \['Consolas'                        10, 2, 0]
             \]
         elseif OSX()
@@ -239,15 +237,15 @@ if has('gui_running')
             \]
         else
             let font_descs = [
-                \['JetBrainsMono Nerd Font',        9, 2, 3],
-                \['JetBrainsMono Nerd Font Mono',   9, 2, 2],
-                \['InconsolataGo Nerd Font',        9, 2, 3],
-                \['InconsolataGo Nerd Font Mono',   9, 2, 2],
-                \['Inconsolata for Powerline',      9, 2, 1],
-                \['Inconsolata',                    9, 2, 0],
-                \['DejaVu Sans Mono for Powerline', 9, 2, 1],
-                \['DejaVu Sans Mono',               9, 2, 0],
-                \['Monospace',                      9, 2, 0]
+                \['JetBrainsMono Nerd Font',         9, 2, 3],
+                \['JetBrainsMono Nerd Font Mono',    9, 2, 2],
+                \['InconsolataGo Nerd Font',        10, 2, 3],
+                \['InconsolataGo Nerd Font Mono',   10, 2, 2],
+                \['Inconsolata for Powerline',      10, 2, 1],
+                \['Inconsolata',                    10, 2, 0],
+                \['DejaVu Sans Mono for Powerline',  9, 2, 1],
+                \['DejaVu Sans Mono',                9, 2, 0],
+                \['Monospace',                       9, 2, 0]
             \]
         endif
 
