@@ -201,8 +201,7 @@ if v:version >= 703
 endif
 
 " set default guifont
-" if g:ex_font_extra_glyph is set, that means the user has customized the gui font.
-if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS()) && !exists('g:ex_font_extra_glyph')
+if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS())
     augroup ex_gui_font
         " check and determine the gui font after GUIEnter.
         " NOTE: getfontname function only works after GUIEnter.
@@ -214,42 +213,42 @@ if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS
     function! s:set_gui_font()
         if WINDOWS()
             let font_descs = [
-                \['JetBrainsMono NF',                9, 2, 2],
-                \['InconsolataGo NF',               10, 2, 2],
-                \['Consolas NF',                    10, 2, 2],
-                \['Inconsolata for Powerline',      10, 2, 1],
-                \['Inconsolata',                    10, 2, 0],
-                \['DejaVu Sans Mono for Powerline',  9, 2, 1],
-                \['DejaVu Sans Mono',                9, 2, 0],
-                \['Consolas'                        10, 2, 0]
+                \['JetBrainsMono NF',                9, 2],
+                \['InconsolataGo NF',               10, 2],
+                \['Consolas NF',                    10, 2],
+                \['Inconsolata for Powerline',      10, 2],
+                \['Inconsolata',                    10, 2],
+                \['DejaVu Sans Mono for Powerline',  9, 2],
+                \['DejaVu Sans Mono',                9, 2],
+                \['Consolas'                        10, 2]
             \]
         elseif OSX()
             let font_descs = [
-                \['JetBrainsMono Nerd Font',        12, 2, 3],
-                \['JetBrainsMono Nerd Font Mono',   12, 2, 2],
-                \['InconsolataGo Nerd Font',        14, 2, 3],
-                \['InconsolataGo Nerd Font Mono',   14, 2, 2],
-                \['Inconsolata for Powerline',      14, 2, 1],
-                \['Inconsolata',                    14, 2, 0],
-                \['DejaVu Sans Mono for Powerline', 12, 2, 1],
-                \['DejaVu Sans Mono',               12, 2, 0],
-                \['Monokai',                        12, 2, 0]
+                \['JetBrainsMono Nerd Font',        12, 2],
+                \['JetBrainsMono Nerd Font Mono',   12, 2],
+                \['InconsolataGo Nerd Font',        14, 2],
+                \['InconsolataGo Nerd Font Mono',   14, 2],
+                \['Inconsolata for Powerline',      14, 2],
+                \['Inconsolata',                    14, 2],
+                \['DejaVu Sans Mono for Powerline', 12, 2],
+                \['DejaVu Sans Mono',               12, 2],
+                \['Monokai',                        12, 2]
             \]
         else
             let font_descs = [
-                \['JetBrainsMono Nerd Font',         9, 2, 3],
-                \['JetBrainsMono Nerd Font Mono',    9, 2, 2],
-                \['InconsolataGo Nerd Font',        10, 2, 3],
-                \['InconsolataGo Nerd Font Mono',   10, 2, 2],
-                \['Inconsolata for Powerline',      10, 2, 1],
-                \['Inconsolata',                    10, 2, 0],
-                \['DejaVu Sans Mono for Powerline',  9, 2, 1],
-                \['DejaVu Sans Mono',                9, 2, 0],
-                \['Monospace',                       9, 2, 0]
+                \['JetBrainsMono Nerd Font',         9, 2],
+                \['JetBrainsMono Nerd Font Mono',    9, 2],
+                \['InconsolataGo Nerd Font',        10, 2],
+                \['InconsolataGo Nerd Font Mono',   10, 2],
+                \['Inconsolata for Powerline',      10, 2],
+                \['Inconsolata',                    10, 2],
+                \['DejaVu Sans Mono for Powerline',  9, 2],
+                \['DejaVu Sans Mono',                9, 2],
+                \['Monospace',                       9, 2]
             \]
         endif
 
-        for [font_name, font_size, line_space, extra_glyph] in font_descs
+        for [font_name, font_size, line_space] in font_descs
             if getfontname(font_name) != ''
                 let font_setting = font_name
                 if has('gui_gtk2') || has('gui_gtk3')
@@ -260,7 +259,6 @@ if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS
 
                 let &guifont = font_setting
                 let &linespace = line_space
-                let g:ex_font_extra_glyph = extra_glyph
                 break
             endif
         endfor
