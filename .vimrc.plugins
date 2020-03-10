@@ -29,23 +29,15 @@ Plug 'LendyZhang/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
-if !exists('g:ex_font_extra_glyph')
-    if WINDOWS()
-        let g:ex_font_extra_glyph = 2
-    else
-        let g:ex_font_extra_glyph = 3
-    endif
-endif
-
-if g:ex_font_extra_glyph == 3
-    let g:ex_project_folder_label = "\ufc6e "
-    let g:ex_project_folder_label_closed = "\uf74a "
+if !exists('g:ex_font_extra_glyph') || g:ex_font_extra_glyph < 2
+    let g:ex_project_folder_label = "[F]"
+    let g:ex_project_folder_label_closed = "[+]"
 elseif g:ex_font_extra_glyph == 2
     let g:ex_project_folder_label = "\uf078 "
     let g:ex_project_folder_label_closed = "\uf054 "
 else
-    let g:ex_project_folder_label = "[F]"
-    let g:ex_project_folder_label_closed = "[+]"
+    let g:ex_project_folder_label = "\ufc6e "
+    let g:ex_project_folder_label_closed = "\uf74a "
 endif
 
 Plug 'LendyZhang/ex-project'
@@ -291,7 +283,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-if g:ex_font_extra_glyph > 0
+if exists('g:ex_font_extra_glyph') && g:ex_font_extra_glyph > 0
     let g:airline_powerline_fonts = 1
 endif
 
