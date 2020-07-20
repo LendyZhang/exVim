@@ -22,6 +22,7 @@ Plug 'ciaranm/detectindent'
 autocmd BufReadPost * :DetectIndent
 
 " The best semantic completion I'd ever used.
+let g:coc_global_extensions = ['coc-lists', 'coc-highlight', 'coc-clangd']
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Use tab for trigger completion with characters ahead and navigate.
