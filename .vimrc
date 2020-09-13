@@ -201,7 +201,7 @@ if v:version >= 703
 endif
 
 " set default guifont
-if has('gui_running') && (has('gui_gtk2') || has('gui_gtk3') || OSX() || WINDOWS()) && &guifont == ""
+if has('gui_running') && (WINDOWS() || OSX() || has('gui_gtk2') || has('gui_gtk3')) && (exists('+guifont') && &guifont == "")
     augroup ex_gui_font
         " check and determine the gui font after GUIEnter.
         " NOTE: getfontname function only works after GUIEnter.
